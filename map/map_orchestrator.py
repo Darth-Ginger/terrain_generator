@@ -3,6 +3,8 @@ from typing import Tuple
 from .grid import Grid3D
 from .graph import TerrainGraph
 
+from utilities.logger import LoggerUtility as log
+
 class MapOrchestrator:
     """Handles the synchronization of the grid and graph."""
 
@@ -11,6 +13,9 @@ class MapOrchestrator:
         self.graph = TerrainGraph()
         self.seed = seed
 
+        log.success("Map orchestrator initialized.")
+
+    @log.log_method_stats
     def initialize_graph(self) -> None:
         """Populates the graph based on the grid's state."""
         for x in range(self.grid.size[0]):

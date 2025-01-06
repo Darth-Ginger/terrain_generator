@@ -1,6 +1,14 @@
 
 from typing import Tuple
 
+# Logging settings
+LOGGING_LEVEL = "DEBUG"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+ENABLE_TERMINAL_LOGGING = True  # Enable/disable terminal logging
+ENABLE_FILE_LOGGING = True  # Enable/disable file logging
+LOG_FILE_PATH = "logs/app.log"  # Path for the log file
+DEBUG_OUTPUT_FILE = "logs/debug_output.log"  # Path for debug output
+
+
 # Grid settings
 GRID_SIZE: Tuple[int, int] = (5, 5)  # X and Y dimensions
 MAX_ELEVATION: float = 10.0  # Max elevation in kilometers

@@ -2,13 +2,16 @@
 from map.map_orchestrator import MapOrchestrator
 from .noise_ops import PerlinNoise, VoronoiNoise
 from .erosion import Erosion
+from utilities.logger import LoggerUtility as log
 
 class TerrainGenerator:
     """Generates terrain using noise and erosion."""
 
     def __init__(self, map_orchestrator: MapOrchestrator) -> None:
         self.map = map_orchestrator
+        log.success("Terrain generator initialized.")
 
+    @log.log_method_stats
     def generate_heightmap(self) -> None:
         """Generates a heightmap using Perlin and Voronoi noise."""
         perlin = PerlinNoise(scale=0.1, seed=self.map.seed)
@@ -32,12 +35,14 @@ class TerrainGenerator:
                 for z in range(max_z):
                     self.map.grid.set_cell_property(x, y, z, "type", "land")
 
+        log.success("Heightmap generation complete.")
+
+    @log.log_method_stats
     def generate(self) -> None:
         """Full terrain generation process."""
-        print("Generating heightmap...")
+        log.info("Generating terrain...")
         self.generate_heightmap()
-        print("Heightmap generation complete.")
-        print("Populating graph...")
+        log.info("Populating graph...")
         self.map.initialize_graph()
-        print("Graph population complete.")
+        log.success("Graph population complete.")
             

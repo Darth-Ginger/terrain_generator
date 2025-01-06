@@ -1,4 +1,5 @@
 
+from utilities.logger import LoggerUtility as log
 from typing import Tuple
 import noise
 import numpy as np
@@ -9,7 +10,10 @@ class PerlinNoise:
     def __init__(self, scale: float, seed: int) -> None:
         self.scale = scale
         self.seed = seed
+        log.success(f"Perlin noise initialized with scale: {scale} and seed: {seed}.")
 
+    @log.log_method_stats
+    @log.write_debug_output()
     def generate(self, size: Tuple[int, int]) -> np.ndarray:
         """Generates a 2D array of Perlin noise."""
         np.random.seed(self.seed)
@@ -24,7 +28,10 @@ class VoronoiNoise:
     def __init__(self, regions: int, seed: int) -> None:
         self.regions = regions
         self.seed = seed
+        log.success(f"Voronoi noise initialized with regions: {regions} and seed: {seed}.")
 
+    @log.log_method_stats
+    @log.write_debug_output()
     def generate(self, size: Tuple[int, int]) -> np.ndarray:
         """Generates Voronoi regions."""
         np.random.seed(self.seed)

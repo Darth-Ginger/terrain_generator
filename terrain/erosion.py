@@ -1,11 +1,13 @@
 
-from typing import Tuple
 import numpy as np
+from utilities.logger import LoggerUtility as log
 
 class Erosion:
     """Simulates erosion on a heightmap."""
 
     @staticmethod
+    @log.log_method_stats
+    @log.write_debug_output()
     def apply(heightmap: np.ndarray, iterations: int) -> np.ndarray:
         """Applies erosion over multiple iterations."""
         for _ in range(iterations):

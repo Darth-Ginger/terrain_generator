@@ -1,0 +1,34 @@
+2025-01-06 14:41:17 | ERROR    | Exception in initialize_cells: Logger.level() missing 1 required positional argument: 'name' | utilities.logger:wrapper
+Traceback (most recent call last):
+
+  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\main.py", line 8, in <module>
+    map_orchestrator = MapOrchestrator(
+                       └ <class 'map.map_orchestrator.MapOrchestrator'>
+
+  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\map\map_orchestrator.py", line 12, in __init__
+    self.grid = Grid3D(size, max_elevation, max_depth)
+    │           │      │     │              └ 5.0
+    │           │      │     └ 10.0
+    │           │      └ (5, 5)
+    │           └ <class 'map.grid.Grid3D'>
+    └ <map.map_orchestrator.MapOrchestrator object at 0x000001531EEB3620>
+
+  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\map\grid.py", line 15, in __init__
+    self.initialize_cells()
+    │    └ <function Grid3D.initialize_cells at 0x000001531E878180>
+    └ <map.grid.Grid3D object at 0x000001531EEB34D0>
+
+> File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\utilities\logger.py", line 77, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ (<map.grid.Grid3D object at 0x000001531EEB34D0>,)
+             └ <function Grid3D.initialize_cells at 0x000001531E87B7E0>
+
+  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\utilities\logger.py", line 94, in wrapper
+    if logger.level("DEBUG").no > logger.level().no:
+       │      │                   │      └ <function Logger.level at 0x000001531E866980>
+       │      │                   └ <loguru.logger handlers=[(id=1, level=10, sink=<stdout>), (id=2, level=20, sink='logs/app.log')]>
+       │      └ <function Logger.level at 0x000001531E866980>
+       └ <loguru.logger handlers=[(id=1, level=10, sink=<stdout>), (id=2, level=20, sink='logs/app.log')]>
+
+TypeError: Logger.level() missing 1 required positional argument: 'name'
