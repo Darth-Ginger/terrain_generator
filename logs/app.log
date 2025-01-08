@@ -1,34 +1,2827 @@
-2025-01-06 14:41:17 | ERROR    | Exception in initialize_cells: Logger.level() missing 1 required positional argument: 'name' | utilities.logger:wrapper
-Traceback (most recent call last):
-
-  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\main.py", line 8, in <module>
-    map_orchestrator = MapOrchestrator(
-                       └ <class 'map.map_orchestrator.MapOrchestrator'>
-
-  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\map\map_orchestrator.py", line 12, in __init__
-    self.grid = Grid3D(size, max_elevation, max_depth)
-    │           │      │     │              └ 5.0
-    │           │      │     └ 10.0
-    │           │      └ (5, 5)
-    │           └ <class 'map.grid.Grid3D'>
-    └ <map.map_orchestrator.MapOrchestrator object at 0x000001531EEB3620>
-
-  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\map\grid.py", line 15, in __init__
-    self.initialize_cells()
-    │    └ <function Grid3D.initialize_cells at 0x000001531E878180>
-    └ <map.grid.Grid3D object at 0x000001531EEB34D0>
-
-> File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\utilities\logger.py", line 77, in wrapper
-    result = func(*args, **kwargs)
-             │     │       └ {}
-             │     └ (<map.grid.Grid3D object at 0x000001531EEB34D0>,)
-             └ <function Grid3D.initialize_cells at 0x000001531E87B7E0>
-
-  File "c:\Users\Justi\SynologyDrive\Docker\map_gen_v2\terrain_generator\utilities\logger.py", line 94, in wrapper
-    if logger.level("DEBUG").no > logger.level().no:
-       │      │                   │      └ <function Logger.level at 0x000001531E866980>
-       │      │                   └ <loguru.logger handlers=[(id=1, level=10, sink=<stdout>), (id=2, level=20, sink='logs/app.log')]>
-       │      └ <function Logger.level at 0x000001531E866980>
-       └ <loguru.logger handlers=[(id=1, level=10, sink=<stdout>), (id=2, level=20, sink='logs/app.log')]>
-
-TypeError: Logger.level() missing 1 required positional argument: 'name'
+================================================================================
+ Script started at 2025-01-08 09:01:55
+================================================================================
+2025-01-08 09:01:55 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9859s | utilities.logger:wrapper
+2025-01-08 09:01:55 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 09:01:55 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 09:01:55 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 09:01:55 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 09:01:55 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000027648E2D010>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:01:55 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 09:01:55 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000027648E2D010>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:01:55 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 09:01:55 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 09:01:55 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000027648E2D160>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:01:56 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 1.0064s | utilities.logger:wrapper
+2025-01-08 09:01:56 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000027648E2D2B0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:01:56 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0083s | utilities.logger:wrapper
+2025-01-08 09:01:56 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 09:01:56 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0098s | utilities.logger:wrapper
+2025-01-08 09:01:56 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 09:01:56 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.0116s | utilities.logger:wrapper
+2025-01-08 09:01:56 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 09:01:56 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x0000027648E2C980>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:01:58 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 2.9354s | utilities.logger:wrapper
+2025-01-08 09:01:58 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:01:58 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.9365s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:23:54
+================================================================================
+2025-01-08 09:23:55 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x00000207ED5DACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:23:58 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.5102s | utilities.logger:wrapper
+2025-01-08 09:23:58 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:23:58 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 4.5113s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:25:47
+================================================================================
+2025-01-08 09:25:47 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001A6AE27AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:25:50 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.5982s | utilities.logger:wrapper
+2025-01-08 09:25:50 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:25:50 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.5993s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:27:14
+================================================================================
+2025-01-08 09:27:18 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 4.0567s | utilities.logger:wrapper
+2025-01-08 09:27:18 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:27:18 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 4.0578s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:29:03
+================================================================================
+2025-01-08 09:29:03 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x00000232D5F3AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.4401s | utilities.logger:wrapper
+2025-01-08 09:29:03 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 09:29:03 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 09:29:03 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 09:29:03 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 09:29:03 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000232D5F3B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:03 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 09:29:03 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000232D5F3B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:03 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 09:29:03 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 09:29:03 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000232D5F3B4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.4582s | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000232D5F3B620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.4598s | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 09:29:03 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.4614s | utilities.logger:wrapper
+2025-01-08 09:29:03 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 09:29:03 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.4631s | utilities.logger:wrapper
+2025-01-08 09:29:03 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 09:29:03 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x00000232D5F3ACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:29:06 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.6330s | utilities.logger:wrapper
+2025-01-08 09:29:06 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:29:06 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.6342s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:30:06
+================================================================================
+2025-01-08 09:30:06 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001B9AE06AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.8372s | utilities.logger:wrapper
+2025-01-08 09:30:06 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 09:30:06 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 09:30:06 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 09:30:06 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 09:30:06 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001B9AE06B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:06 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 09:30:06 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001B9AE06B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:06 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 09:30:06 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 09:30:06 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001B9AE06B4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.8579s | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001B9AE06B620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.8595s | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 09:30:06 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.8613s | utilities.logger:wrapper
+2025-01-08 09:30:06 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 09:30:06 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.8631s | utilities.logger:wrapper
+2025-01-08 09:30:06 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 09:30:06 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001B9AE06ACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:09 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.9608s | utilities.logger:wrapper
+2025-01-08 09:30:09 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:30:09 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.9619s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 09:30:36
+================================================================================
+2025-01-08 09:30:36 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001C49A73EE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9687s | utilities.logger:wrapper
+2025-01-08 09:30:36 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 09:30:36 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 09:30:36 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 09:30:36 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 09:30:36 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001C49A73F380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:36 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 09:30:36 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001C49A73F380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:36 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 09:30:36 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 09:30:36 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001C49A73F4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9927s | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001C49A73F620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9953s | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 09:30:36 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9976s | utilities.logger:wrapper
+2025-01-08 09:30:36 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 09:30:36 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9995s | utilities.logger:wrapper
+2025-01-08 09:30:37 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 09:30:37 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001C49A73ECF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 09:30:40 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.7004s | utilities.logger:wrapper
+2025-01-08 09:30:40 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 09:30:40 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 4.7021s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:01:41
+================================================================================
+2025-01-08 10:01:41 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x00000212A70DAE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.2694s | utilities.logger:wrapper
+2025-01-08 10:01:41 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:01:41 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:01:41 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:01:41 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:01:41 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000212A70DB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:41 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:01:41 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000212A70DB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:41 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:01:41 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:01:41 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000212A70DB4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.2884s | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000212A70DB620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.2901s | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:01:41 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.2919s | utilities.logger:wrapper
+2025-01-08 10:01:41 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:01:41 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.2936s | utilities.logger:wrapper
+2025-01-08 10:01:41 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:01:41 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x00000212A70DACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:01:44 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.5054s | utilities.logger:wrapper
+2025-01-08 10:01:44 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:01:44 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.5067s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:02:52
+================================================================================
+2025-01-08 10:02:52 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001D61E0FAE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.3718s | utilities.logger:wrapper
+2025-01-08 10:02:52 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:02:52 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:02:52 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:02:52 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:02:52 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001D61E0FB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:52 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:02:52 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001D61E0FB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:52 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:02:52 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:02:52 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001D61E0FB4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3897s | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001D61E0FB620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3913s | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:02:52 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.3931s | utilities.logger:wrapper
+2025-01-08 10:02:52 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:02:52 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.3947s | utilities.logger:wrapper
+2025-01-08 10:02:52 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:02:52 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001D61E0FACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:02:55 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.5320s | utilities.logger:wrapper
+2025-01-08 10:02:55 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:02:55 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.5331s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:03:22
+================================================================================
+2025-01-08 10:03:22 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x00000185E12BAE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9089s | utilities.logger:wrapper
+2025-01-08 10:03:22 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:03:22 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:03:22 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:03:22 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:03:22 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000185E12BB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:22 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:03:22 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x00000185E12BB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:22 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:03:22 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:03:22 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000185E12BB4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9292s | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000185E12BB620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9311s | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:03:22 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9326s | utilities.logger:wrapper
+2025-01-08 10:03:22 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:03:22 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9344s | utilities.logger:wrapper
+2025-01-08 10:03:22 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:03:22 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x00000185E12BACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:03:26 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 4.3965s | utilities.logger:wrapper
+2025-01-08 10:03:26 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:03:26 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 4.3975s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:08:44
+================================================================================
+2025-01-08 10:08:44 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000002B14B19AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.7249s | utilities.logger:wrapper
+2025-01-08 10:08:44 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:08:44 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:08:44 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:08:44 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:08:44 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002B14B19B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:44 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:08:44 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002B14B19B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:44 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:08:44 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:08:44 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002B14B19B4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.7432s | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002B14B19B620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.7450s | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:08:44 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.7467s | utilities.logger:wrapper
+2025-01-08 10:08:44 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:08:44 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.7482s | utilities.logger:wrapper
+2025-01-08 10:08:44 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:08:44 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000002B14B19ACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:08:48 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 4.0100s | utilities.logger:wrapper
+2025-01-08 10:08:48 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:08:48 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 4.0112s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:10:25
+================================================================================
+2025-01-08 10:10:25 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001D233DBAE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.2689s | utilities.logger:wrapper
+2025-01-08 10:10:25 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:10:25 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:10:25 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:10:25 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:10:25 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001D233DBB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:25 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:10:25 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001D233DBB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:25 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:10:25 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:10:25 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001D233DBB4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.2871s | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001D233DBB620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.2891s | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:10:25 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.2908s | utilities.logger:wrapper
+2025-01-08 10:10:25 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:10:25 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.2925s | utilities.logger:wrapper
+2025-01-08 10:10:25 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:10:25 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001D233DBACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:10:28 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.3941s | utilities.logger:wrapper
+2025-01-08 10:10:28 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:10:28 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.3953s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:11:49
+================================================================================
+2025-01-08 10:11:49 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x0000018B6A34AF90>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.7524s | utilities.logger:wrapper
+2025-01-08 10:11:49 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:11:49 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:11:49 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:11:49 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:11:49 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000018B6A34B4D0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:49 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:11:49 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000018B6A34B4D0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:49 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:11:49 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:11:49 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000018B6A34B620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.7734s | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000018B6A34B770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.7752s | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:11:49 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.7769s | utilities.logger:wrapper
+2025-01-08 10:11:49 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:11:49 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.7785s | utilities.logger:wrapper
+2025-01-08 10:11:49 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:11:49 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x0000018B6A34AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:11:52 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.8606s | utilities.logger:wrapper
+2025-01-08 10:11:52 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:11:52 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.8618s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:12:26
+================================================================================
+2025-01-08 10:12:26 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000002A02420AE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.4936s | utilities.logger:wrapper
+2025-01-08 10:12:26 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:12:26 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:12:26 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:12:26 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:12:26 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002A02420B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:26 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:12:26 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002A02420B380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:26 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:12:26 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:12:26 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002A02420B4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.5115s | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002A02420B620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.5133s | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:12:26 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.5150s | utilities.logger:wrapper
+2025-01-08 10:12:26 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:12:26 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.5167s | utilities.logger:wrapper
+2025-01-08 10:12:26 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:12:26 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000002A02420ACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:12:29 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.6198s | utilities.logger:wrapper
+2025-01-08 10:12:29 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:12:29 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.6209s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 10:13:40
+================================================================================
+2025-01-08 10:13:40 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001EF85ABAE40>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.3497s | utilities.logger:wrapper
+2025-01-08 10:13:40 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 10:13:40 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 10:13:40 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 10:13:40 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 10:13:40 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001EF85ABB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:40 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 10:13:40 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001EF85ABB380>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:40 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 10:13:40 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 10:13:40 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001EF85ABB4D0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3678s | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001EF85ABB620>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3695s | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 10:13:40 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.3713s | utilities.logger:wrapper
+2025-01-08 10:13:40 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 10:13:40 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.3732s | utilities.logger:wrapper
+2025-01-08 10:13:40 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 10:13:40 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001EF85ABACF0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 10:13:43 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 3.5172s | utilities.logger:wrapper
+2025-01-08 10:13:43 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 10:13:43 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 3.5185s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 14:17:47
+================================================================================
+2025-01-08 14:17:47 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000002BA455A70E0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:47 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9635s | utilities.logger:wrapper
+2025-01-08 14:17:47 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 14:17:47 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 14:17:47 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 14:17:47 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 14:17:47 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002BA455A7620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:47 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 14:17:47 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002BA455A7620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:47 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 14:17:47 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 14:17:47 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002BA455A7770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:48 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 1.1899s | utilities.logger:wrapper
+2025-01-08 14:17:48 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002BA455A78C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:48 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.1918s | utilities.logger:wrapper
+2025-01-08 14:17:48 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 14:17:48 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.1935s | utilities.logger:wrapper
+2025-01-08 14:17:48 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 14:17:48 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.1952s | utilities.logger:wrapper
+2025-01-08 14:17:48 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 14:17:48 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000002BA455A6F90>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:17:49 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 1.3197s | utilities.logger:wrapper
+2025-01-08 14:17:49 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 14:17:49 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 2.3209s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 14:18:50
+================================================================================
+2025-01-08 14:18:50 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001B97AD170E0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.5677s | utilities.logger:wrapper
+2025-01-08 14:18:50 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 14:18:50 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 14:18:50 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 14:18:50 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 14:18:50 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001B97AD17620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:50 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 14:18:50 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001B97AD17620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:50 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 14:18:50 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 14:18:50 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001B97AD17770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.5861s | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001B97AD178C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.5881s | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 14:18:50 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.5899s | utilities.logger:wrapper
+2025-01-08 14:18:50 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 14:18:50 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.5921s | utilities.logger:wrapper
+2025-01-08 14:18:50 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 14:18:50 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001B97AD16F90>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:18:51 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 1.6674s | utilities.logger:wrapper
+2025-01-08 14:18:51 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 14:18:51 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.6686s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 14:34:01
+================================================================================
+2025-01-08 14:34:01 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x0000024D8ECA9FD0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 1.0125s | utilities.logger:wrapper
+2025-01-08 14:34:02 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 14:34:02 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 14:34:02 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 14:34:02 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 14:34:02 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000024D8ECAA510>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:02 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 14:34:02 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x0000024D8ECAA510>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:02 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 14:34:02 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 14:34:02 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000024D8ECAA660>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.0364s | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000024D8ECAA7B0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0383s | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 14:34:02 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0411s | utilities.logger:wrapper
+2025-01-08 14:34:02 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 14:34:02 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.0427s | utilities.logger:wrapper
+2025-01-08 14:34:02 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 14:34:02 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x0000024D8ECA9E80>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:34:03 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 1.1353s | utilities.logger:wrapper
+2025-01-08 14:34:03 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 14:34:03 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.1365s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 14:38:22
+================================================================================
+2025-01-08 14:38:22 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000001496AC73230>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:22 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9794s | utilities.logger:wrapper
+2025-01-08 14:38:22 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 14:38:22 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 14:38:22 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 14:38:22 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 14:38:22 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001496AC73770>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:22 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 14:38:22 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000001496AC73770>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:22 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 14:38:22 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 14:38:22 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001496AC738C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:22 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9996s | utilities.logger:wrapper
+2025-01-08 14:38:23 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001496AC73A10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:23 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0013s | utilities.logger:wrapper
+2025-01-08 14:38:23 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 14:38:23 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0030s | utilities.logger:wrapper
+2025-01-08 14:38:23 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 14:38:23 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.0037s | utilities.logger:wrapper
+2025-01-08 14:38:23 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 14:38:23 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000001496AC730E0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:23 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.0055s | utilities.logger:wrapper
+2025-01-08 14:38:23 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 14:38:23 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.0061s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 14:38:35
+================================================================================
+2025-01-08 14:38:35 | DEBUG    | Entering: Grid3D.initialize_cells:
+	 args:
+		 (<map.grid.Grid3D object at 0x000002217D4F70E0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Exiting: Grid3D.initialize_cells:
+	 Execution Time: 0.9629s | utilities.logger:wrapper
+2025-01-08 14:38:35 | SUCCESS  | 3D grid initialized. | utilities.logger:success
+2025-01-08 14:38:35 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 14:38:35 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 14:38:35 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 14:38:35 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002217D4F7620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 14:38:35 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002217D4F7620>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 14:38:35 | SUCCESS  | Voronoi noise initialized with regions: 50 and seed: 42. | utilities.logger:success
+2025-01-08 14:38:35 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002217D4F7770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9826s | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002217D4F78C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9844s | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.294     ,  0.232008  ,  0.27345601,  0.21584399,  0.27379202],
+       [ 0.043992  ,  0.04204616,  0.10461635,  0.12033345,  0.2133199 ],
+       [ 0.14654399,  0.14197365,  0.06787865,  0.15034553,  0.06885624],
+       [-0.01184399,  0.04923002,  0.28557235,  0.0370316 ,  0.03231439],
+       [ 0.17020798,  0.19753325,  0.20716217,  0.3147946 ,  0.26432262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9865s | utilities.logger:wrapper
+2025-01-08 14:38:35 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 14:38:35 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9878s | utilities.logger:wrapper
+2025-01-08 14:38:35 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 14:38:35 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000002217D4F6F90>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 14:38:35 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.9906s | utilities.logger:wrapper
+2025-01-08 14:38:35 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 14:38:35 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.9916s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 15:39:20
+================================================================================
+2025-01-08 15:39:20 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (<map.grid.Grid2D object at 0x000002B42FF77230>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:20 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.8942s | utilities.logger:wrapper
+2025-01-08 15:39:20 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 15:39:20 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 15:39:20 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 15:39:20 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 15:39:20 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002B42FF77770>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:20 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 15:39:20 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (<terrain.terrain_generator.TerrainGenerator object at 0x000002B42FF77770>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:20 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 15:39:20 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 15:39:20 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002B42FF778C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 1.0700s | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002B42FF77A10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0715s | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0730s | utilities.logger:wrapper
+2025-01-08 15:39:21 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 15:39:21 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.0736s | utilities.logger:wrapper
+2025-01-08 15:39:21 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 15:39:21 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (<map.map_orchestrator.MapOrchestrator object at 0x000002B42FF770E0>,),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:39:21 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.0749s | utilities.logger:wrapper
+2025-01-08 15:39:21 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 15:39:21 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.0757s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 15:54:48
+================================================================================
+2025-01-08 15:54:48 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.2814s | utilities.logger:wrapper
+2025-01-08 15:54:48 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 15:54:48 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 15:54:48 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 15:54:48 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 15:54:48 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 15:54:48 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 15:54:48 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 15:54:48 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001A44D66B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3048s | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001A44D66BA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3067s | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.3085s | utilities.logger:wrapper
+2025-01-08 15:54:48 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 15:54:48 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.3094s | utilities.logger:wrapper
+2025-01-08 15:54:48 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 15:54:48 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:54:48 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.3109s | utilities.logger:wrapper
+2025-01-08 15:54:48 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 15:54:48 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.3116s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 15:55:56
+================================================================================
+2025-01-08 15:55:56 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.3696s | utilities.logger:wrapper
+2025-01-08 15:55:56 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 15:55:56 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 15:55:56 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 15:55:56 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 15:55:56 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 15:55:56 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 15:55:56 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 15:55:56 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002130521B770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3969s | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002130521B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3989s | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.4005s | utilities.logger:wrapper
+2025-01-08 15:55:56 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 15:55:56 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.4012s | utilities.logger:wrapper
+2025-01-08 15:55:56 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 15:55:56 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:55:56 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.4030s | utilities.logger:wrapper
+2025-01-08 15:55:56 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 15:55:56 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.4038s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 15:56:27
+================================================================================
+2025-01-08 15:56:27 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9354s | utilities.logger:wrapper
+2025-01-08 15:56:27 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 15:56:27 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 15:56:27 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 15:56:27 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 15:56:27 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 15:56:27 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 15:56:27 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 15:56:27 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000020C2EA8ACF0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9614s | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000020C2EA8AE40>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9637s | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9659s | utilities.logger:wrapper
+2025-01-08 15:56:27 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 15:56:27 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9668s | utilities.logger:wrapper
+2025-01-08 15:56:27 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 15:56:27 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 15:56:27 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.9686s | utilities.logger:wrapper
+2025-01-08 15:56:27 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 15:56:27 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.9694s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:18:41
+================================================================================
+2025-01-08 16:18:41 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.6025s | utilities.logger:wrapper
+2025-01-08 16:18:41 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:18:41 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:18:41 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:18:41 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:18:41 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:18:41 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:18:41 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:18:41 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000026AA343B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.6262s | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000026AA343BA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.6284s | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.6306s | utilities.logger:wrapper
+2025-01-08 16:18:41 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:18:41 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.6316s | utilities.logger:wrapper
+2025-01-08 16:18:41 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:18:41 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:18:41 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.6333s | utilities.logger:wrapper
+2025-01-08 16:18:41 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:18:41 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.6342s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:24:01
+================================================================================
+2025-01-08 16:24:01 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:01 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9882s | utilities.logger:wrapper
+2025-01-08 16:24:01 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:24:01 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:24:01 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:24:01 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:24:01 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:01 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:24:01 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:01 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:24:01 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:24:01 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000268835DB8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 1.0119s | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000268835DBA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0137s | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0153s | utilities.logger:wrapper
+2025-01-08 16:24:02 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:24:02 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.0160s | utilities.logger:wrapper
+2025-01-08 16:24:02 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:24:02 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:02 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.0173s | utilities.logger:wrapper
+2025-01-08 16:24:02 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:24:02 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.0179s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:24:38
+================================================================================
+2025-01-08 16:24:38 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.3228s | utilities.logger:wrapper
+2025-01-08 16:24:38 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:24:38 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:24:38 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:24:38 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:24:38 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:24:38 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:24:38 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:24:38 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001819B78B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3448s | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001819B78BA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3464s | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.3481s | utilities.logger:wrapper
+2025-01-08 16:24:38 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:24:38 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.3488s | utilities.logger:wrapper
+2025-01-08 16:24:38 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:24:38 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:24:38 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.3503s | utilities.logger:wrapper
+2025-01-08 16:24:38 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:24:38 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.3510s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:25:26
+================================================================================
+2025-01-08 16:25:26 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.6282s | utilities.logger:wrapper
+2025-01-08 16:25:26 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:25:26 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:25:26 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:25:26 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:25:26 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:25:26 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:25:26 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:25:26 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000285D76EF770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.6503s | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000285D76EF8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.6519s | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.6536s | utilities.logger:wrapper
+2025-01-08 16:25:26 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:25:26 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.6543s | utilities.logger:wrapper
+2025-01-08 16:25:26 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:25:26 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:26 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.6557s | utilities.logger:wrapper
+2025-01-08 16:25:26 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:25:26 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.6566s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:25:36
+================================================================================
+2025-01-08 16:25:36 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9482s | utilities.logger:wrapper
+2025-01-08 16:25:36 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:25:36 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:25:36 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:25:36 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:25:36 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:25:36 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:25:36 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:25:36 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000217FBCFB8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9716s | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000217FBCFBA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9735s | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9754s | utilities.logger:wrapper
+2025-01-08 16:25:36 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:25:36 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9762s | utilities.logger:wrapper
+2025-01-08 16:25:36 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:25:36 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:25:36 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.9777s | utilities.logger:wrapper
+2025-01-08 16:25:36 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:25:36 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.9785s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:26:49
+================================================================================
+2025-01-08 16:26:49 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.1400s | utilities.logger:wrapper
+2025-01-08 16:26:49 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:26:49 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:26:49 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:26:49 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:26:49 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:26:49 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:26:49 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:26:49 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000002152502F770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.1635s | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000002152502F8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.1650s | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.1669s | utilities.logger:wrapper
+2025-01-08 16:26:49 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:26:49 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.1678s | utilities.logger:wrapper
+2025-01-08 16:26:49 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:26:49 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:26:49 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.1693s | utilities.logger:wrapper
+2025-01-08 16:26:49 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:26:49 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.1702s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:27:48
+================================================================================
+2025-01-08 16:27:48 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.2525s | utilities.logger:wrapper
+2025-01-08 16:27:48 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:27:48 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:27:48 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:27:48 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:27:48 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:27:48 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:27:48 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:27:48 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001F8CCBDF770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.2749s | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001F8CCBDF8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.2766s | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.2784s | utilities.logger:wrapper
+2025-01-08 16:27:48 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:27:48 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.2792s | utilities.logger:wrapper
+2025-01-08 16:27:48 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:27:48 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:27:48 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.2807s | utilities.logger:wrapper
+2025-01-08 16:27:48 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:27:48 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.2814s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:28:30
+================================================================================
+2025-01-08 16:28:30 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.3706s | utilities.logger:wrapper
+2025-01-08 16:28:30 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:28:30 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:28:30 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:28:30 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:28:30 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:28:30 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:28:30 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:28:30 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000202F9C9B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.3919s | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000202F9C9BA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.3935s | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.3952s | utilities.logger:wrapper
+2025-01-08 16:28:30 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:28:30 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.3959s | utilities.logger:wrapper
+2025-01-08 16:28:30 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:28:30 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:30 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.3973s | utilities.logger:wrapper
+2025-01-08 16:28:30 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:28:30 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.3982s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:28:45
+================================================================================
+2025-01-08 16:28:45 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.4031s | utilities.logger:wrapper
+2025-01-08 16:28:45 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:28:45 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:28:45 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:28:45 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:28:45 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:28:45 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:28:45 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:28:45 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000023B8853F770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.4249s | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000023B8853F8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.4266s | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.4283s | utilities.logger:wrapper
+2025-01-08 16:28:45 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:28:45 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.4291s | utilities.logger:wrapper
+2025-01-08 16:28:45 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:28:45 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:28:45 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.4306s | utilities.logger:wrapper
+2025-01-08 16:28:45 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:28:45 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.4313s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:30:50
+================================================================================
+2025-01-08 16:30:50 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.4117s | utilities.logger:wrapper
+2025-01-08 16:30:50 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:30:50 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:30:50 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:30:50 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:30:50 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:30:50 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:30:50 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:30:50 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000276AF05B8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.4340s | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000276AF05BA10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.4355s | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.4370s | utilities.logger:wrapper
+2025-01-08 16:30:50 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:30:50 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.4379s | utilities.logger:wrapper
+2025-01-08 16:30:50 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:30:50 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:30:50 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.4396s | utilities.logger:wrapper
+2025-01-08 16:30:50 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:30:50 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.4404s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:32:16
+================================================================================
+2025-01-08 16:32:16 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:16 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9725s | utilities.logger:wrapper
+2025-01-08 16:32:16 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:32:16 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:32:16 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:32:16 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:32:16 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:16 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:32:16 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:16 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:32:16 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:32:16 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000253614578C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 1.0008s | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000025361457A10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.0031s | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.0055s | utilities.logger:wrapper
+2025-01-08 16:32:17 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:32:17 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 1.0066s | utilities.logger:wrapper
+2025-01-08 16:32:17 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:32:17 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:32:17 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.0084s | utilities.logger:wrapper
+2025-01-08 16:32:17 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:32:17 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 1.0092s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:33:05
+================================================================================
+2025-01-08 16:33:05 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9203s | utilities.logger:wrapper
+2025-01-08 16:33:05 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:33:05 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:33:05 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:33:05 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:33:05 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:33:05 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:33:05 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:33:05 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000021AD4A4F770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9454s | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000021AD4A4F8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9473s | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9488s | utilities.logger:wrapper
+2025-01-08 16:33:05 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:33:05 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9497s | utilities.logger:wrapper
+2025-01-08 16:33:05 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:33:05 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:05 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.9517s | utilities.logger:wrapper
+2025-01-08 16:33:05 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:33:05 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.9524s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:33:18
+================================================================================
+2025-01-08 16:33:18 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.9273s | utilities.logger:wrapper
+2025-01-08 16:33:18 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:33:18 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:33:18 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:33:18 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:33:18 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:33:18 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:33:18 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:33:18 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001C65838F770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9492s | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001C65838F8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.9509s | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.9525s | utilities.logger:wrapper
+2025-01-08 16:33:18 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:33:18 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.9533s | utilities.logger:wrapper
+2025-01-08 16:33:18 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:33:18 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:33:18 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.9548s | utilities.logger:wrapper
+2025-01-08 16:33:18 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:33:18 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.9555s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:34:02
+================================================================================
+2025-01-08 16:34:02 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.7472s | utilities.logger:wrapper
+2025-01-08 16:34:02 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:34:02 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:34:02 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:34:02 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:34:02 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:34:02 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:02 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:02 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x0000026FBCF778C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.7682s | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000026FBCF77A10>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.7698s | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.7714s | utilities.logger:wrapper
+2025-01-08 16:34:02 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:34:02 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.7722s | utilities.logger:wrapper
+2025-01-08 16:34:02 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:34:02 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:02 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.7735s | utilities.logger:wrapper
+2025-01-08 16:34:02 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:34:02 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.7742s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:34:14
+================================================================================
+2025-01-08 16:34:14 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.5242s | utilities.logger:wrapper
+2025-01-08 16:34:14 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:34:14 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:34:14 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:34:14 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:34:14 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:34:14 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:14 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:14 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001D9426DF770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.5471s | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001D9426DF8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.5489s | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.5506s | utilities.logger:wrapper
+2025-01-08 16:34:14 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:34:14 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.5514s | utilities.logger:wrapper
+2025-01-08 16:34:14 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:34:14 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:14 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.5530s | utilities.logger:wrapper
+2025-01-08 16:34:14 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:34:14 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.5539s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:34:46
+================================================================================
+2025-01-08 16:34:46 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(5, 5), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]
+ [None None None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.2506s | utilities.logger:wrapper
+2025-01-08 16:34:46 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:34:46 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:34:46 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:34:46 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:34:46 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:34:46 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (5, 5)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:46 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:34:46 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x00000229A22BF770>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.2736s | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x00000229A22BF8C0>, (5, 5)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 0.2754s | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.30945601,  0.18584399,  0.14779202],
+       [-0.004008  ,  0.21004616,  0.27861635,  0.28233345,  0.1053199 ],
+       [ 0.11054399,  0.23197365,  0.27187865,  0.25234553, -0.00314376],
+       [ 0.08415601,  0.22923002,  0.26757235,  0.1330316 ,  0.12831439],
+       [ 0.12220798,  0.16753325,  0.20116217,  0.0687946 ,  0.07232262]]),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.2771s | utilities.logger:wrapper
+2025-01-08 16:34:46 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:34:46 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 0.2780s | utilities.logger:wrapper
+2025-01-08 16:34:46 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:34:46 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(5, 5), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:34:46 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 0.2796s | utilities.logger:wrapper
+2025-01-08 16:34:46 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:34:46 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 0.2802s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-08 16:35:05
+================================================================================
+2025-01-08 16:35:05 | DEBUG    | Entering: Grid2D.initialize_cells:
+	 args:
+		 (Grid2D(size=(500, 500), max_elevation=5.0, max_depth=1.0, normalized_sea_level=0.16666666666666666, grid=[[None None None ... None None None]
+ [None None None ... None None None]
+ [None None None ... None None None]
+ ...
+ [None None None ... None None None]
+ [None None None ... None None None]
+ [None None None ... None None None]]),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:05 | DEBUG    | Exiting: Grid2D.initialize_cells:
+	 Execution Time: 0.7821s | utilities.logger:wrapper
+2025-01-08 16:35:05 | SUCCESS  | 2D grid initialized. | utilities.logger:success
+2025-01-08 16:35:05 | SUCCESS  | Terrain graph initialized. | utilities.logger:success
+2025-01-08 16:35:05 | SUCCESS  | Map orchestrator initialized. | utilities.logger:success
+2025-01-08 16:35:05 | SUCCESS  | Terrain generator initialized. | utilities.logger:success
+2025-01-08 16:35:05 | DEBUG    | Entering: TerrainGenerator.generate:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (500, 500)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:05 | INFO     | Generating terrain... | utilities.logger:info
+2025-01-08 16:35:05 | DEBUG    | Entering: TerrainGenerator.generate_heightmap:
+	 args:
+		 (TerrainGenerator(map_orchestrator=MapOrchestrator:
+  Grid Size: (500, 500)
+  Max Elevation: 5.0
+  Max Depth: 1.0
+  Seed: 42
+),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:05 | SUCCESS  | Perlin noise initialized with scale: 0.1 and seed: 42. | utilities.logger:success
+2025-01-08 16:35:05 | SUCCESS  | Voronoi noise initialized with regions: 10 and seed: 42. | utilities.logger:success
+2025-01-08 16:35:05 | DEBUG    | Entering: PerlinNoise.generate:
+	 args:
+		 (<terrain.noise_ops.PerlinNoise object at 0x000001EA1D3AF770>, (500, 500)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:05 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.9485s | utilities.logger:wrapper
+2025-01-08 16:35:05 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x000001EA1D3AF8C0>, (500, 500)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:07 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 2.8616s | utilities.logger:wrapper
+2025-01-08 16:35:07 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.15945601, ...,  0.24584415,
+         0.24945605,  0.21400739],
+       [-0.004008  ,  0.06004616,  0.09861635, ...,  0.23894688,
+         0.24293429,  0.20802052],
+       [-0.03945601,  0.02197365,  0.06187865, ...,  0.20322936,
+         0.2093817 ,  0.17755257],
+       ...,
+       [ 0.35575296,  0.28189784,  0.19645427, ...,  0.12584415,
+         0.06999259,  0.00948222],
+       [ 0.31189161,  0.23687137,  0.14556206, ...,  0.18530759,
+         0.12945605,  0.06403875],
+       [ 0.24939979,  0.1741506 ,  0.08192132, ...,  0.21036932,
+         0.15942471,  0.09400739]], shape=(500, 500)),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-08 16:35:07 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.8837s | utilities.logger:wrapper
+2025-01-08 16:35:07 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-08 16:35:07 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 2.9961s | utilities.logger:wrapper
+2025-01-08 16:35:07 | INFO     | Populating graph... | utilities.logger:info
+2025-01-08 16:35:07 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(500, 500), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-08 16:35:12 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 5.2381s | utilities.logger:wrapper
+2025-01-08 16:35:12 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-08 16:35:12 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 7.2392s | utilities.logger:wrapper

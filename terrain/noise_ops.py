@@ -12,8 +12,7 @@ class PerlinNoise:
         self.seed = seed
         log.success(f"Perlin noise initialized with scale: {scale} and seed: {seed}.")
 
-    @log.log_method_stats
-    @log.write_debug_output()
+    @log.log_method
     def generate(self, size: Tuple[int, int]) -> np.ndarray:
         """Generates a 2D array of Perlin noise."""
         np.random.seed(self.seed)
@@ -30,8 +29,7 @@ class VoronoiNoise:
         self.seed = seed
         log.success(f"Voronoi noise initialized with regions: {regions} and seed: {seed}.")
 
-    @log.log_method_stats
-    @log.write_debug_output()
+    @log.log_method
     def generate(self, size: Tuple[int, int]) -> np.ndarray:
         """Generates Voronoi regions."""
         np.random.seed(self.seed)

@@ -1,0 +1,812 @@
+[
+    [
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ]
+    ],
+    [
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ]
+    ],
+    [
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ]
+    ],
+    [
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ]
+    ],
+    [
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ],
+        [
+            {
+                "elevation": 0.0,
+                "normalized_elevation": 0.0,
+                "type": "water"
+            },
+            {
+                "elevation": 0.001,
+                "normalized_elevation": 0.16666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.002,
+                "normalized_elevation": 0.3333333333333333,
+                "type": "water"
+            },
+            {
+                "elevation": 0.003,
+                "normalized_elevation": 0.5,
+                "type": "water"
+            },
+            {
+                "elevation": 0.004,
+                "normalized_elevation": 0.6666666666666666,
+                "type": "water"
+            },
+            {
+                "elevation": 0.005,
+                "normalized_elevation": 0.8333333333333334,
+                "type": "water"
+            }
+        ]
+    ]
+]

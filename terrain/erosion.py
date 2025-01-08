@@ -6,8 +6,7 @@ class Erosion:
     """Simulates erosion on a heightmap."""
 
     @staticmethod
-    @log.log_method_stats
-    @log.write_debug_output()
+    @log.log_method
     def apply(heightmap: np.ndarray, iterations: int) -> np.ndarray:
         """Applies erosion over multiple iterations."""
         for _ in range(iterations):

@@ -2,18 +2,23 @@ import logging
 import sys
 from loguru import logger
 from functools import wraps
-import inspect
-import time
 from datetime import datetime
-from config import LOGGING_LEVEL, ENABLE_TERMINAL_LOGGING, ENABLE_FILE_LOGGING, LOG_FILE_PATH, DEBUG_OUTPUT_FILE
+from config import (
+    LOGGING_LEVEL,
+    ENABLE_TERMINAL_LOGGING,
+    ENABLE_FILE_LOGGING,
+    LOG_FILE_PATH,
+    VERBOSE_LOGGING,
+)
 
-# InterceptHandler to route standard logging to Loguru
+# InterceptHandler to route standard logging calls to Loguru
 class InterceptHandler(logging.Handler):
     """Intercepts standard logging calls and routes them to Loguru."""
 
     def emit(self, record):
         level = logger.level(record.levelname).name if record.levelname in logger._core.levels else record.levelno
         logger.log(level, record.getMessage())
+
 
 # Configure Loguru logger
 logger.remove()  # Remove default logger
@@ -28,15 +33,34 @@ if ENABLE_TERMINAL_LOGGING:
 if ENABLE_FILE_LOGGING:
     logger.add(
         sink=LOG_FILE_PATH,
-        level="INFO",  # Log INFO, SUCCESS, and higher levels
-        rotation="1 MB",  # Rotate logs after 1MB
+        level="DEBUG",  # Always log INFO and above to the file
+        rotation="10 MB",  # Rotate logs after reaching 10MB
         retention="7 days",  # Retain logs for 7 days
         format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | {message} | <cyan>{name}</cyan>:<cyan>{function}</cyan>",
+        enqueue=True,
+        serialize=False,
     )
 
-class LoggerUtility:
-    """Wrapper around Loguru for standardized logging."""
 
+class LoggerUtility:
+    """Wrapper around Loguru for standardized logging and decorators."""
+
+    @staticmethod
+    def log_startup_header():
+        """Logs a startup header to the terminal and/or log file."""
+        header = "=" * 80
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        startup_message = f"{header}\n Script started at {timestamp}\n{header}"
+
+        # Write the header to the terminal if enabled
+        if ENABLE_TERMINAL_LOGGING:
+            print(startup_message)
+
+        # Write the header to the log file if enabled
+        if ENABLE_FILE_LOGGING:
+            with open(LOG_FILE_PATH, "a") as log_file:
+                log_file.write(f"{startup_message}\n")
+                
     @staticmethod
     def debug(message: str):
         logger.debug(message)
@@ -47,7 +71,7 @@ class LoggerUtility:
 
     @staticmethod
     def success(message: str):
-        logger.log("SUCCESS", message)
+        logger.success(message)
 
     @staticmethod
     def warning(message: str):
@@ -66,77 +90,32 @@ class LoggerUtility:
         logger.exception(message)
 
     @staticmethod
-    def log_method_stats(func):
-        """Logs method input, output, and execution time."""
+    def log_method(func):
+        """Decorator to log method details (inputs, outputs, exceptions)."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            start_time = time.time()
-            logger.debug(f"Entering: {func.__name__}, args: {args}, kwargs: {kwargs}")
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            logger.debug(f"Entering: {func.__qualname__}:\n\t args:\n\t\t {args},\n\t kwargs:\n\t\t {kwargs}")
+
             try:
                 result = func(*args, **kwargs)
-                exec_time = time.time() - start_time
-                logger.info(f"Exiting: {func.__name__}, result: {result}, exec_time: {exec_time:.4f}s")
+                exec_time = f"{(datetime.now() - datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S')).total_seconds():.4f}s"
+
+                # Log the result and execution time
+                if VERBOSE_LOGGING:
+                    logger.debug(
+                        f"Exiting: {func.__qualname__}:\n\t Execution Time: {exec_time},\n\t Args:\n\t\t {args},\n\t Kwargs:\n\t\t {kwargs},\n\t Result: \n\t\t{result}"
+                    )
+                else:
+                    logger.debug(
+                        f"Exiting: {func.__qualname__}:\n\t Execution Time: {exec_time}"
+                    )
                 return result
+
             except Exception as e:
+                # Log exceptions
                 logger.exception(f"Exception in {func.__name__}: {e}")
                 raise
 
         return wrapper
-
-    @staticmethod
-    def write_debug_output(file_path: str = DEBUG_OUTPUT_FILE):
-        """Logs method output and trace in debug mode."""
-
-        def decorator(func):
-            @wraps(func)
-            def wrapper(*args, **kwargs):
-                if logger.level("DEBUG").no > logger.level().no:
-                    # If current logging level is not DEBUG, skip logging
-                    return func(*args, **kwargs)
-
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                caller = inspect.stack()[1]
-                caller_info = f"File: {caller.filename}, Line: {caller.lineno}, Method: {caller.function}"
-                method_name = func.__name__
-
-                try:
-                    # Log method call details
-                    logger.debug(f"Entering: {method_name}, args: {args}, kwargs: {kwargs}")
-
-                    # Execute the method and capture its output
-                    result = func(*args, **kwargs)
-
-                    # Prepare output to be written
-                    output = (
-                        f"[{timestamp}] Method: {method_name}\n"
-                        f"Caller: {caller_info}\n"
-                        f"Args: {args}\n"
-                        f"Kwargs: {kwargs}\n"
-                        f"Output: {result if result is not None else 'Method executed successfully with no return value.'}\n"
-                    )
-
-                    # Write to the debug file
-                    with open(file_path, "a") as debug_file:
-                        debug_file.write(output + "\n")
-
-                    return result
-
-                except Exception as e:
-                    # Log and write any exceptions to the debug file
-                    error_output = (
-                        f"[{timestamp}] Method: {method_name}\n"
-                        f"Caller: {caller_info}\n"
-                        f"Args: {args}\n"
-                        f"Kwargs: {kwargs}\n"
-                        f"Exception: {e}\n"
-                    )
-                    with open(file_path, "a") as debug_file:
-                        debug_file.write(error_output + "\n")
-
-                    logger.exception(f"Exception in {method_name}: {e}")
-                    raise
-
-            return wrapper
-
-        return decorator
