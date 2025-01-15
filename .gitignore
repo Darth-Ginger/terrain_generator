@@ -42,6 +42,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+*.log
 
 # Ignore editor specific files
 .vscode/

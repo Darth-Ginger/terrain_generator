@@ -34,7 +34,7 @@ if ENABLE_FILE_LOGGING:
     logger.add(
         sink=LOG_FILE_PATH,
         level="DEBUG",  # Always log INFO and above to the file
-        rotation="10 MB",  # Rotate logs after reaching 10MB
+        rotation="2 MB",  # Rotate logs after reaching 2MB
         retention="7 days",  # Retain logs for 7 days
         format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | {message} | <cyan>{name}</cyan>:<cyan>{function}</cyan>",
         enqueue=True,

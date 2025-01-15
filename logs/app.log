@@ -2825,3 +2825,48 @@
 2025-01-08 16:35:12 | SUCCESS  | Graph population complete. | utilities.logger:success
 2025-01-08 16:35:12 | DEBUG    | Exiting: TerrainGenerator.generate:
 	 Execution Time: 7.2392s | utilities.logger:wrapper
+================================================================================
+ Script started at 2025-01-15 00:11:12
+================================================================================
+2025-01-15 00:11:12 | DEBUG    | Exiting: PerlinNoise.generate:
+	 Execution Time: 0.7542s | utilities.logger:wrapper
+2025-01-15 00:11:12 | DEBUG    | Entering: VoronoiNoise.generate:
+	 args:
+		 (<terrain.noise_ops.VoronoiNoise object at 0x0000012EBD93F8C0>, (500, 500)),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-15 00:11:14 | DEBUG    | Exiting: VoronoiNoise.generate:
+	 Execution Time: 2.5775s | utilities.logger:wrapper
+2025-01-15 00:11:14 | DEBUG    | Entering: Erosion.apply:
+	 args:
+		 (array([[ 0.06      ,  0.124008  ,  0.15945601, ...,  0.24584415,
+         0.24945605,  0.21400739],
+       [-0.004008  ,  0.06004616,  0.09861635, ...,  0.23894688,
+         0.24293429,  0.20802052],
+       [-0.03945601,  0.02197365,  0.06187865, ...,  0.20322936,
+         0.2093817 ,  0.17755257],
+       ...,
+       [ 0.35575296,  0.28189784,  0.19645427, ...,  0.12584415,
+         0.06999259,  0.00948222],
+       [ 0.31189161,  0.23687137,  0.14556206, ...,  0.18530759,
+         0.12945605,  0.06403875],
+       [ 0.24939979,  0.1741506 ,  0.08192132, ...,  0.21036932,
+         0.15942471,  0.09400739]], shape=(500, 500)),),
+	 kwargs:
+		 {'iterations': 5} | utilities.logger:wrapper
+2025-01-15 00:11:14 | DEBUG    | Exiting: Erosion.apply:
+	 Execution Time: 0.5971s | utilities.logger:wrapper
+2025-01-15 00:11:14 | SUCCESS  | Heightmap generation complete. | utilities.logger:success
+2025-01-15 00:11:14 | DEBUG    | Exiting: TerrainGenerator.generate_heightmap:
+	 Execution Time: 2.7165s | utilities.logger:wrapper
+2025-01-15 00:11:14 | INFO     | Populating graph... | utilities.logger:info
+2025-01-15 00:11:14 | DEBUG    | Entering: MapOrchestrator.initialize_graph:
+	 args:
+		 (MapOrchestrator(size=(500, 500), max_elevation=5.0, max_depth=1.0, seed=42),),
+	 kwargs:
+		 {} | utilities.logger:wrapper
+2025-01-15 00:11:18 | DEBUG    | Exiting: MapOrchestrator.initialize_graph:
+	 Execution Time: 4.7044s | utilities.logger:wrapper
+2025-01-15 00:11:18 | SUCCESS  | Graph population complete. | utilities.logger:success
+2025-01-15 00:11:18 | DEBUG    | Exiting: TerrainGenerator.generate:
+	 Execution Time: 6.7055s | utilities.logger:wrapper
