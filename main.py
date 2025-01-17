@@ -1,7 +1,7 @@
 import numpy as np
 
 from config import GRID_SIZE, MAX_ELEVATION, MAX_DEPTH, SEED
-from map.map_orchestrator import MapOrchestrator
+from maps.map_orchestrator import MapOrchestrator
 from terrain.terrain_generator import TerrainGenerator
 from utilities.logger import LoggerUtility as log
 import matplotlib.pyplot as plt

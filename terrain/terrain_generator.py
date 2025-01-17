@@ -1,5 +1,5 @@
 
-from map.map_orchestrator import MapOrchestrator
+from maps.map_orchestrator import MapOrchestrator
 from .noise_ops import PerlinNoise, VoronoiNoise
 from .erosion import Erosion
 from utilities.logger import LoggerUtility as log
