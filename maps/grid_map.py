@@ -1,6 +1,6 @@
 from typing import Any, Dict
 import numpy as np
-from maps.generic_map import GenericMap
+from generic_map import GenericMap
 
 
 class GridMap(GenericMap):

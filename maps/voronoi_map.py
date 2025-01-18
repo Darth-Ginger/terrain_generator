@@ -1,7 +1,7 @@
 import networkx as nx
 from typing import Dict, Any
 
-from maps.generic_map import GenericMap
+from generic_map import GenericMap
 
 
 class VoronoiMap(GenericMap):

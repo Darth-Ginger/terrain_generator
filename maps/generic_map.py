@@ -4,7 +4,7 @@ import sys
 from typing import Any, Dict, Type
 from abc import ABC, abstractmethod
 import importlib
-import pkgutil
+
 
 class GenericMap(ABC):
     """
@@ -36,22 +36,28 @@ class GenericMap(ABC):
     @classmethod
     def discover_map_classes(cls) -> Dict[str, Type["GenericMap"]]:
         """
-        Discover all subclasses of GenericMap in the current module.
-        
+        Discover all subclasses of GenericMap.
+
         Returns:
-            Dict[str, Type[GenericMap]]: A dictionary mapping class names to class objects.
+            Dict[str, Type[GenericMap]]: A dictionary mapping class names to their class objects.
         """
+        current_dir = os.path.dirname(__file__)
         map_classes = {}
-        dir_path = os.path.dirname(os.path.abspath(__file__))
-        for filename in os.listdir(dir_path):
-            if filename.endswith('_map.py') and filename != 'generic_map.py':
-                #TODO Update this to get the module name from the file itself
-                module_name = filename[:-3]  # remove .py extension
+       
+        
+        for filename in os.listdir(current_dir):
+            if filename.endswith("_map.py") and filename != os.path.basename(__file__):
+                filename = filename[:-3]  # Remove .py extension
+                module_name = f"{filename}"  # Remove .py extension
                 module = importlib.import_module(module_name)
-                for obj_name, obj in module.__dict__.items():
-                    if inspect.isclass(obj) and issubclass(obj, cls) and obj is not cls:
-                        map_classes[obj_name] = obj
-        return map_classes
+                class_name = "".join(word.capitalize() for word in filename.split('_'))
+                subclass = getattr(module, class_name)
+                # issubclass(GenericMap, module_name)
+                print(f"{module_name}: {issubclass(subclass, getattr(importlib.import_module('generic_map'), 'GenericMap').__class__)}")
+        return {
+            subclass.__name__: subclass
+            for subclass in cls.__subclasses__()
+        }
         
 
     @classmethod
@@ -80,3 +86,7 @@ class GenericMap(ABC):
         # Create an instance of the requested map type
         return map_classes[map_type](**kwargs)
         
+        
+if __name__ == "__main__":
+    map_classes = GenericMap.discover_map_classes()
+    print(map_classes)

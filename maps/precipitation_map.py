@@ -1,6 +1,6 @@
 
 
-from maps.grid_map import GridMap
+from grid_map import GridMap
 
 
 class PrecipitationMap(GridMap):
