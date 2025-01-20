@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...maps.grid_map import GridMap
+from ..maps.grid_map import GridMap
 
 # Test for GridMap
 class TestGridMap:

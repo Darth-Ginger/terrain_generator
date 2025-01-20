@@ -1,6 +1,6 @@
 
 # Test for VoronoiMap
-from ...maps.voronoi_map import VoronoiMap
+from maps.voronoi_map import VoronoiMap
 
 
 class TestVoronoiMap:

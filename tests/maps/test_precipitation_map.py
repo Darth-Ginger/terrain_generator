@@ -1,6 +1,6 @@
 
 # Test for PrecipitationMap
-from ...maps.precipitation_map import PrecipitationMap
+from maps.precipitation_map import PrecipitationMap
 
 
 class TestPrecipitationMap:

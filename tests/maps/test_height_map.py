@@ -1,6 +1,6 @@
 
 # Test for HeightMap
-from ...maps.height_map import HeightMap
+from maps.height_map import HeightMap
 
 
 class TestHeightMap:
