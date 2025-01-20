@@ -9,6 +9,7 @@ class HeightMap(GridMap):
     """
     A class for 2D grid-based height maps.
     """
+    map_type = "HeightMap"
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         self.height_range           : tuple[float, float] = kwargs.get("height_range", (0,10000))

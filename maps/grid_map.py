@@ -7,6 +7,8 @@ class GridMap(GenericMap):
     """
     A class for 2D grid-based maps (e.g., terrain, temperature).
     """
+    map_type = "GridMap"
+    
     def __init__(self, **kwargs) -> None:
         self.width   : int = kwargs.get("width", 10)  # Default to 10 if not provided in kwargs
         self.height  : int = kwargs.get("height", 10)  # Default to 10 if not provided in kwargs

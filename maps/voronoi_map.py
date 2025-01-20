@@ -8,6 +8,7 @@ class VoronoiMap(GenericMap):
     """
     A class for representing Voronoi diagram-based maps using a graph structure.
     """
+    map_type = "VoronoiMap"
 
     def __init__(self):
         """
